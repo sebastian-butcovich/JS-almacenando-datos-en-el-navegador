@@ -1,30 +1,7 @@
-import checkComplete from './components/checkComplete.js';
-import deleteIcon from './components/deleteIcon.js';
+import {addTask} from "./components/addTask.js"
+import { readTask } from "./components/readTask.js";
 
-const btn = document.querySelector('[data-form-btn]');
-
-const createTask = (evento) => {
-  evento.preventDefault();
-  const input = document.querySelector('[data-form-input]');
-  const value = input.value;
-  const list = document.querySelector('[data-list]');
-  const task = document.createElement('li');
-  task.classList.add('card');
-  input.value = '';
-  //backticks
-  const taskContent = document.createElement('div');
-
-  const titleTask = document.createElement('span');
-  titleTask.classList.add('task');
-  titleTask.innerText = value;
-  taskContent.appendChild(checkComplete());
-  taskContent.appendChild(titleTask);
-  // task.innerHTML = content;
-
-  task.appendChild(taskContent);
-  task.appendChild(deleteIcon());
-  list.appendChild(task);
-};
-
+const btn = document.querySelector('[data-form-btn]'); // Elemento boton para crear la tarea
 //Arrow functions o funciones anonimas
-btn.addEventListener('click', createTask);
+btn.addEventListener('click', addTask); // Agrego un evento de click y la funcion que atiende dicho evento del boton agregar tarea
+readTask(); // LLama la funcion que obtiene lo que esta en localStorage, cada vez que reinicio la pagina 
